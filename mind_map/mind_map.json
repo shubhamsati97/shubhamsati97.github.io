@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "root",
+      "title": "Skills Graph",
+      "height": 100,
+      "description": "My Mind Map",
+      "group": 0,
+      "fill": {
+        "src": "https://svgsilh.com/svg/1531009.svg"
+      }
+    },
+    {
+      "id": "economics",
+      "title": "Economics",
+      "height": 50,
+      "description": "My Tiny Brain",
+      "group": 1,
+      "fill": {
+        "src": "https://freesvg.org/img/Money_bag.png"
+      }
+    },
+    {
+      "id": "computer_science",
+      "title": "Computer Science",
+      "description": "Skills in the field of Computer Science",
+      "height": 50,
+      "group": 2,
+      "fill": {
+        "src": "https://freesvg.org/img/karderio_computer_screen.png"
+      }
+    },
+    {
+      "id": "research_work",
+      "title": "Research Work",
+      "description": "Research which I have done",
+      "height": 40,
+      "group": 2,
+      "fill": {
+        "src": "https://freesvg.org/img/1652942711microscope-scientific-tool-side-view-svgrepo-com.png"
+      }
+    },
+    {
+      "id": "coding_profiles",
+      "title": "Coding Profiles",
+      "description": "Different Coding Platforms where I am/was active",
+      "height": 40,
+      "group": 2,
+      "fill": {
+        "src": "https://freesvg.org/img/computers.png"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "root",
+      "to": "economics"
+    },
+    {
+      "from": "root",
+      "to": "computer_science"
+    },
+    {
+      "from": "computer_science",
+      "to": "research_work"
+    },
+    {
+      "from": "computer_science",
+      "to": "coding_profiles"
+    }
+  ]
+}
