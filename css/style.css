@@ -84,8 +84,10 @@ i {
 }
 
 p {
-    margin: 14px 0 40px;
-    font-size: 1.2em;
+    margin: 25px 0 40px;
+    font-size: 1.5em;
+    color: var(--cream);
+    text-shadow: 0 0 8px rgba(0,0,0,0.7);
 }
 
 .box-link {
