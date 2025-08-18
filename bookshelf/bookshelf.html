@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookshelf - Shubham Sati</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --demon-red: #c41e1e;
+            --demon-blue: #1e3a8a;
+            --demon-purple: #4c1d95;
+            --demon-yellow: #f59e0b;
+            --demon-bg: #0f172a;
+            --demon-card: #1e293b;
+            --demon-text: #e2e8f0;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--demon-bg) url('https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--demon-text);
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.85);
+            z-index: -1;
+        }
+        .bookshelf-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem 20px;
+            position: relative;
+        }
+        
+        .bookshelf-container::before {
+            content: '鬼滅の刃';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--demon-red);
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .book {
+            background: var(--demon-card);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+        
+        .book::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--demon-red), var(--demon-blue), var(--demon-purple));
+        }
+        
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .book-info {
+            padding: 0.5rem 0;
+        }
+        
+        .book-cover {
+            position: relative;
+            aspect-ratio: 2 / 3;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .book:hover .book-cover img {
+            transform: scale(1.05);
+        }
+        
+        .book-status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .book-status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-reading {
+            background: linear-gradient(135deg, var(--demon-red), #e11d48);
+        }
+        
+        .status-toread {
+            background: linear-gradient(135deg, var(--demon-blue), #3b82f6);
+        }
+        
+        .status-completed {
+            background: linear-gradient(135deg, var(--demon-purple), #8b5cf6);
+        }
+        
+        .book-progress {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 0.5rem 0 0.25rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.2) 50%, 
+                rgba(255,255,255,0.1) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        .progress-bar div {
+            height: 100%;
+            background: linear-gradient(90deg, var(--demon-red), #f97316);
+            transition: width 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .status-completed .progress-bar div {
+            background: linear-gradient(90deg, var(--demon-purple), #a855f7);
+        }
+        
+        .book-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--demon-text);
+            font-size: 1.1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .book-author {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h1 {
+            text-align: center;
+            margin: 0 0 3rem;
+            color: var(--demon-text);
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255,0,0,0.5);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 2rem;
+        }
+        
+        h1::before,
+        h1::after {
+            content: '⚔️';
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+        
+        .back-home {
+            display: inline-block;
+            text-align: center;
+            margin: 3rem 0 0;
+            padding: 0.75rem 2rem;
+            color: white;
+            text-decoration: none;
+            background: var(--demon-red);
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.1);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        
+        .back-home:hover {
+            background: #e11d48;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            text-decoration: underline;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bookshelf-container">
+        <h1><i class="fas fa-book-open"></i> My Bookshelf</h1>
+        
+        <div class="book-grid">
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=4XDZDAAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=4XDZDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Make Your Bed"></div>
+                    <div class="book-info">
+                        <div class="book-title">Make Your Bed</div>
+                        <div class="book-author">William H. McRaven</div>
+                        <span class="book-status status-read">Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=CuwmEAAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=CuwmEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="The Man Who Mistook His Wife for a Hat"></div>
+                    <div class="book-info">
+                        <div class="book-title">The Man Who Mistook His Wife for a Hat</div>
+                        <div class="book-author">Oliver Sacks</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://books.google.com/books/about/The_48_Laws_of_Power.html?hl=&id=tmmOvqV4MboC" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=tmmOvqV4MboC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="The 48 Laws of Power"></div>
+                    <div class="book-info">
+                        <div class="book-title">The 48 Laws of Power</div>
+                        <div class="book-author">Robert Greene</div>
+                        <span class="book-status status-reading">Currently Reading</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://books.google.com/books/about/Zero_to_One.html?hl=&id=POOJDQAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=POOJDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Zero to One"></div>
+                    <div class="book-info">
+                        <div class="book-title">Zero to One</div>
+                        <div class="book-author">Peter Thiel</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=vnFrEAAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=vnFrEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Buy Back Your Time"></div>
+                    <div class="book-info">
+                        <div class="book-title">Buy Back Your Time</div>
+                        <div class="book-author">Dan Martell</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=4QTzCAAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=4QTzCAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Deep Work"></div>
+                    <div class="book-info">
+                        <div class="book-title">Deep Work</div>
+                        <div class="book-author">Cal Newport</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=ncgJAwAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=ncgJAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="How We Learn"></div>
+                    <div class="book-info">
+                        <div class="book-title">How We Learn</div>
+                        <div class="book-author">Benedict Carey</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=k_VxhO4PcKMC" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=k_VxhO4PcKMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="The 12 Week Year"></div>
+                    <div class="book-info">
+                        <div class="book-title">The 12 Week Year</div>
+                        <div class="book-author">Brian P. Moran</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://books.google.com/books/about/Talking_to_Strangers.html?hl=&id=gD8nDwAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=gD8nDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Talking to Strangers"></div>
+                    <div class="book-info">
+                        <div class="book-title">Talking to Strangers</div>
+                        <div class="book-author">Malcolm Gladwell</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://books.google.com/books/about/The_80_20_Principle.html?hl=&id=Ih359ILyvo8C" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=Ih359ILyvo8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="The 80/20 Principle"></div>
+                    <div class="book-info">
+                        <div class="book-title">The 80/20 Principle</div>
+                        <div class="book-author">Richard Koch</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=O1MInVXd_aoC" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=O1MInVXd_aoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="The Power of Habit"></div>
+                    <div class="book-info">
+                        <div class="book-title">The Power of Habit</div>
+                        <div class="book-author">Charles Duhigg</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=MosvEQAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=MosvEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Sapiens: A Brief History of Humankind"></div>
+                    <div class="book-info">
+                        <div class="book-title">Sapiens: A Brief History of Humankind</div>
+                        <div class="book-author">Yuval Noah Harari</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://books.google.com/books/about/Master_Your_Mental_Strength.html?hl=&id=tLTKoAEACAAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=tLTKoAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" alt="13 Things Mentally Strong People Don't Do"></div>
+                    <div class="book-info">
+                        <div class="book-title">13 Things Mentally Strong People Don't Do</div>
+                        <div class="book-author">Amy Morin</div>
+                        <span class="book-status status-toread">To Read</span>
+                    </div>
+                </a>
+            </div>
+            <div class="book">
+                <a href="https://play.google.com/store/books/details?id=iAOUEAAAQBAJ" target="_blank" class="book-link">
+                    <div class="book-cover"><img src="http://books.google.com/books/content?id=iAOUEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="The Laws of Human Nature"></div>
+                    <div class="book-info">
+                        <div class="book-title">The Laws of Human Nature</div>
+                        <div class="book-author">Robert Greene</div>
+                        <span class="book-status status-reading">Currently Reading</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <a href="../index.html" class="back-home">← Back to Home</a>
+    </div>
+</body>
+</html>
