@@ -18,14 +18,6 @@ body {
     margin: 0;
 }
 
-.name {
-    margin: 120px 0 50px;
-    font-size: 100px;
-    color: var(--gold);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
-    line-height: 0;
-}
-
 .nav-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -85,42 +77,32 @@ body {
 
 .frame-motif { width: 30px; height: 30px; border: 1px solid var(--biswar-white); position: relative; }
 
-.footer-container {
-    width: 100%;
-    height: auto;
+.social-links {
     position: fixed;
-    bottom: 0;
+    bottom: 80px;
     left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    z-index: 100;
+    opacity: 0.5;
 }
 
-.footer {
-    margin: 0 auto;
-    width: 360px;
-    height: auto;
-    padding: 5px 15px;
-    background: rgba(46, 37, 34, 0.8);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    font-size: 16px;
-    color: var(--cream);
-    cursor: pointer;
-    transition: background 300ms;
-}
-
-.footer a {
-    color: var(--gold);
+.social-links a {
+    color: var(--biswar-white);
     text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: opacity 0.3s;
 }
 
-.footer a:hover {
-    color: var(--cream);
-}
+.social-links a:hover { opacity: 1; }
 
-.footer i {
-    font-size: 16px;
-    margin-right: 5px;
+@media (max-width: 768px) {
+    .name-hindi { font-size: 60px; }
+    .nav-grid { gap: 20px; }
+    .chowky-inner { width: 110px; height: 110px; }
 }
 
 /* Background Engine - Liquid & Mandala */
