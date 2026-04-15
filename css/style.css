@@ -159,3 +159,98 @@ p {
     font-size: 16px;
     margin-right: 5px;
 }
+
+/* Background Engine - Liquid & Mandala */
+.bg-engine {
+    position: fixed;
+    inset: 0;
+    background: var(--gerua-liquid);
+    overflow: hidden;
+    z-index: -1;
+}
+
+.liquid-layer {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at 30% 30%, var(--gerua-deep) 0%, transparent 50%), 
+                radial-gradient(circle at 70% 70%, #4a0805 0%, transparent 50%);
+    filter: blur(80px);
+    opacity: 0.9;
+    animation: liquid-flow 25s infinite alternate;
+}
+
+@keyframes liquid-flow {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1) translate(5%, 5%); }
+}
+
+.mandala-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mandala-layer {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.layer-1 {
+    width: 1000px;
+    height: 1000px;
+    border: 1px dashed rgba(255, 248, 225, 0.1);
+    animation: rotate-slow 80s linear infinite;
+}
+
+.layer-2 {
+    width: 800px;
+    height: 800px;
+    border: 2px solid rgba(212, 175, 55, 0.05);
+    animation: rotate-slow 50s linear reverse infinite;
+}
+
+.layer-3 {
+    width: 400px;
+    height: 400px;
+    background: repeating-conic-gradient(from 0deg, var(--biswar-white) 0deg 1deg, transparent 1deg 15deg);
+    opacity: 0.15;
+    animation: pulse 12s ease-in-out infinite;
+}
+
+.bindu {
+    width: 10px;
+    height: 10px;
+    background: var(--pahadi-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 30px var(--pahadi-gold);
+}
+
+@keyframes rotate-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.2; transform: scale(1.05); } }
+
+.lion-watermark {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    font-size: 300px;
+    opacity: 0.03;
+    filter: grayscale(1) invert(1);
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+body::before, body::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: repeating-linear-gradient(45deg, rgba(255, 248, 225, 0.05) 0px, rgba(255, 248, 225, 0.05) 2px, transparent 2px, transparent 25px);
+    z-index: 1000;
+}
+
+body::before { top: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+body::after { bottom: 0; border-top: 1px solid rgba(212, 175, 55, 0.1); }
