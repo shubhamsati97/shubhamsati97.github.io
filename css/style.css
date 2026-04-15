@@ -254,3 +254,49 @@ body::before, body::after {
 
 body::before { top: 0; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
 body::after { bottom: 0; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+
+.hero {
+    position: relative;
+    z-index: 100;
+    padding-top: 15vh;
+}
+
+.name-hindi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(80px, 15vw, 140px);
+    line-height: 1.1;
+    margin: 0;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--biswar-white);
+    filter: drop-shadow(0 0 15px rgba(255, 248, 225, 0.3));
+    letter-spacing: -2px;
+}
+
+.subtitle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.rule {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--pahadi-gold));
+}
+
+.rule:last-child {
+    background: linear-gradient(to left, transparent, var(--pahadi-gold));
+}
+
+.role {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    color: var(--pahadi-gold);
+    font-weight: 300;
+    opacity: 0.7;
+    margin: 0;
+}
