@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 
 :root {
-    --saffron: #E98923;
-    --maroon: #8C2D25;
-    --gold: #D4AF37;
-    --cream: #FFF8E1;
-    --dark-bg: #2E2522;
+    --gerua-deep: #8C2D25;
+    --gerua-liquid: #61100b;
+    --biswar-white: #FFF8E1;
+    --pahadi-gold: #D4AF37;
+    --pichora-saffron: #E98923;
+    --mandala-opacity: 0.15;
 }
 
 body {
