@@ -1,0 +1,74 @@
+.learnings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 50px auto;
+    position: relative;
+    z-index: 100;
+    padding: 0 20px;
+}
+
+.learning-card {
+    background: rgba(255, 248, 225, 0.05);
+    border: 1px solid rgba(255, 248, 225, 0.2);
+    border-radius: 15px;
+    padding: 40px 30px;
+    width: 280px;
+    text-decoration: none;
+    color: var(--biswar-white);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.learning-card:hover {
+    background: rgba(255, 248, 225, 0.1);
+    border-color: var(--pahadi-gold);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.card-icon {
+    font-size: 40px;
+    color: var(--pichora-saffron);
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+}
+
+.learning-card:hover .card-icon {
+    transform: scale(1.1);
+    color: var(--pahadi-gold);
+}
+
+.learning-card h2 {
+    font-family: 'Prata', serif;
+    font-size: 22px;
+    margin: 0 0 15px 0;
+    color: var(--biswar-white);
+}
+
+.learning-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 248, 225, 0.7);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .learnings-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .learning-card {
+        width: 100%;
+        max-width: 350px;
+        box-sizing: border-box;
+    }
+}
