@@ -11,52 +11,67 @@
 }
 
 .learning-card {
-    background: rgba(255, 248, 225, 0.05);
-    border: 1px solid rgba(255, 248, 225, 0.2);
-    border-radius: 15px;
-    padding: 40px 30px;
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 0;
+    padding: 30px 24px;
     width: 280px;
     text-decoration: none;
-    color: var(--biswar-white);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    color: #000000;
+    transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: 4px 4px 0px 0px #000000;
 }
 
 .learning-card:hover {
-    background: rgba(255, 248, 225, 0.1);
-    border-color: var(--pahadi-gold);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(212, 175, 55, 0.2);
+    background: #C1FF72;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px #000000;
+}
+
+.learning-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000000;
 }
 
 .card-icon {
-    font-size: 40px;
-    color: var(--pichora-saffron);
+    font-size: 32px;
+    color: #000000;
     margin-bottom: 20px;
-    transition: transform 0.4s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #000000;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 0px 0px #000000;
 }
 
 .learning-card:hover .card-icon {
-    transform: scale(1.1);
-    color: var(--pahadi-gold);
+    background: #000000;
+    color: #C1FF72;
 }
 
 .learning-card h2 {
-    font-family: 'Prata', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 22px;
-    margin: 0 0 15px 0;
-    color: var(--biswar-white);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    color: #000000;
+    letter-spacing: -0.5px;
 }
 
 .learning-card p {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(255, 248, 225, 0.7);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #000000;
     margin: 0;
 }
 
