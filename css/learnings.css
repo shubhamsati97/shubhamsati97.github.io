@@ -2,8 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    max-width: 1000px;
+    gap: 40px;
+    max-width: 1200px;
     margin: 50px auto;
     position: relative;
     z-index: 100;
@@ -14,8 +14,8 @@
     background: #FFFFFF;
     border: 3px solid #000000;
     border-radius: 0;
-    padding: 30px 24px;
-    width: 280px;
+    padding: 40px 30px;
+    width: 320px;
     text-decoration: none;
     color: #000000;
     transition: all 0.2s ease;
@@ -38,17 +38,17 @@
 }
 
 .card-icon {
-    font-size: 32px;
+    font-size: 40px;
     color: #000000;
-    margin-bottom: 20px;
-    width: 60px;
-    height: 60px;
+    margin-bottom: 30px;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 3px solid #000000;
     background: #FFFFFF;
-    box-shadow: 2px 2px 0px 0px #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
 }
 
 .learning-card:hover .card-icon {
@@ -58,7 +58,7 @@
 
 .learning-card h2 {
     font-family: 'Inter', sans-serif;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 900;
     text-transform: uppercase;
     margin: 0 0 10px 0;
@@ -68,7 +68,7 @@
 
 .learning-card p {
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 1.5;
     color: #000000;
@@ -79,11 +79,35 @@
     .learnings-container {
         flex-direction: column;
         align-items: center;
+        gap: 30px;
+        padding: 0 10px;
     }
     
     .learning-card {
         width: 100%;
         max-width: 350px;
         box-sizing: border-box;
+        padding: 30px 24px;
+        box-shadow: 2px 2px 0px 0px #000000;
+    }
+
+    .learning-card:hover {
+        box-shadow: 4px 4px 0px 0px #000000;
+    }
+
+    .card-icon {
+        font-size: 32px;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+        box-shadow: 2px 2px 0px 0px #000000;
+    }
+
+    .learning-card h2 {
+        font-size: 22px;
+    }
+
+    .learning-card p {
+        font-size: 15px;
     }
 }

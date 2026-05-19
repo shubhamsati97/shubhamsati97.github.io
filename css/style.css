@@ -22,9 +22,9 @@ body {
 .nav-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 400px;
-    margin: 60px auto;
+    gap: 60px;
+    max-width: 600px;
+    margin: 80px auto;
     position: relative;
     z-index: 100;
 }
@@ -35,8 +35,8 @@ body {
 }
 
 .chowky-inner {
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
     background: #FFFFFF;
     border: var(--border-width) solid var(--border-color);
     border-radius: 0;
@@ -50,12 +50,12 @@ body {
 
 .label {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text-primary);
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .chowky-item:hover .chowky-inner {
@@ -71,15 +71,15 @@ body {
 
 /* Abstract Motifs */
 .vasudhara { display: flex; gap: 5px; }
-.vasudhara span { width: 4px; height: 24px; background: var(--text-primary); }
+.vasudhara span { width: 6px; height: 36px; background: var(--text-primary); }
 
-.star-motif { width: 24px; height: 24px; border: var(--border-width) solid var(--text-primary); transform: rotate(45deg); position: relative; }
+.star-motif { width: 36px; height: 36px; border: var(--border-width) solid var(--text-primary); transform: rotate(45deg); position: relative; }
 .star-motif::after { content: ''; position: absolute; inset: 0; border: var(--border-width) solid var(--text-primary); transform: rotate(45deg); }
 
-.circular-motif { width: 24px; height: 24px; border: var(--border-width) solid var(--text-primary); border-radius: 0; position: relative; }
+.circular-motif { width: 36px; height: 36px; border: var(--border-width) solid var(--text-primary); border-radius: 0; position: relative; }
 .circular-motif::after { content: ''; position: absolute; inset: 4px; background: var(--text-primary); }
 
-.frame-motif { width: 24px; height: 24px; border: var(--border-width) solid var(--text-primary); border-radius: 0; position: relative; }
+.frame-motif { width: 36px; height: 36px; border: var(--border-width) solid var(--text-primary); border-radius: 0; position: relative; }
 
 .social-links {
     position: fixed;
@@ -96,32 +96,26 @@ body {
     color: var(--text-primary);
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 8px 16px;
+    padding: 12px 24px;
     border: var(--border-width) solid var(--border-color);
     background: #FFFFFF;
-    box-shadow: 2px 2px 0px 0px #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
     transition: all 0.2s ease;
 }
 
 .social-links a:hover { 
     background: var(--accent-color); 
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0px 0px #000000;
+    box-shadow: 6px 6px 0px 0px #000000;
 }
 
 .social-links a:active {
     transform: translate(2px, 2px);
     box-shadow: 0px 0px 0px 0px #000000;
-}
-
-@media (max-width: 768px) {
-    .name-hindi { font-size: 60px; }
-    .nav-grid { gap: 20px; }
-    .chowky-inner { width: 110px; height: 110px; }
 }
 
 .bg-engine {
@@ -136,7 +130,7 @@ body {
 
 .name-hindi {
     font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: clamp(60px, 10vw, 100px);
+    font-size: clamp(60px, 10vw, 120px);
     font-weight: 900;
     line-height: 1.2;
     margin: 0;
@@ -158,21 +152,30 @@ body {
     background: var(--border-color);
 }
 
-.rule:last-child {
-    background: var(--border-color);
-}
-
 .role {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     text-transform: uppercase;
     letter-spacing: 4px;
     color: var(--text-primary);
     font-weight: 900;
     margin: 0;
-    padding: 6px 16px;
+    padding: 8px 20px;
     background: var(--accent-color);
     border: var(--border-width) solid var(--border-color);
-    box-shadow: 2px 2px 0px 0px #000000;
+    box-shadow: 4px 4px 0px 0px #000000;
     display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .name-hindi { font-size: 50px; }
+    .nav-grid { grid-template-columns: 1fr; gap: 30px; margin: 40px auto; max-width: 300px; }
+    .chowky-inner { width: 140px; height: 140px; }
+    .label { font-size: 14px; margin-top: 15px; }
+    .social-links { flex-wrap: wrap; gap: 15px; bottom: 20px; position: relative; margin-top: 40px; padding-bottom: 20px;}
+    .social-links a { font-size: 14px; padding: 10px 16px; box-shadow: 2px 2px 0px 0px #000000; }
+    .vasudhara span { width: 4px; height: 24px; }
+    .star-motif, .circular-motif, .frame-motif { width: 24px; height: 24px; }
+    .hero { padding-top: 5vh; }
+    .role { font-size: 16px; padding: 6px 16px; box-shadow: 2px 2px 0px 0px #000000; }
 }
